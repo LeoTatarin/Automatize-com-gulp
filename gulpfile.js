@@ -6,7 +6,7 @@ const obfuscate = require('gulp-obfuscate');
 const imagemin = require('gulp-imagemin');
 
 function comprimeImagens() {
-    return gulp.src('./source/images/*')
+    return gulp.src('./source/images/**/*.{png,jpg,jpeg,gif,svg}')
         .pipe(imagemin())
         .pipe(gulp.dest('./build/images'))
 }
@@ -34,3 +34,7 @@ exports.default = function(){
     gulp.watch('./source/scripts/*.js', { ignoreInitial: false}, gulp.series(comprimeJavaScript));
     gulp.watch('./source/images/*', { ignoreInitial: false}, gulp.series(comprimeImagens));
 }
+
+exports.comprimeImagens = comprimeImagens;
+exports.compilaSass = compilaSass;
+exports.comprimeJavaScript = comprimeJavaScript;
